@@ -676,6 +676,90 @@
     color: var(--text);
   }
 
+  /* CERTIFICATIONS CAROUSEL */
+  .certs-carousel-wrap {
+    position: relative;
+    margin-top: 3rem;
+  }
+
+  .certs-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+  }
+
+  .certs-carousel::-webkit-scrollbar { display: none; }
+
+  .cert-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+  }
+
+  .cert-slide-frame {
+    max-width: 520px;
+    margin: 0 auto;
+    aspect-ratio: 4/3;
+    background: #fff;
+    border: 1px solid var(--border-strong);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cert-slide-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .certs-nav {
+    position: absolute;
+    top: calc(50% - 1rem);
+    transform: translateY(-50%);
+    width: 40px; height: 40px;
+    border: 1px solid var(--border-strong);
+    background: var(--bg2);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+    z-index: 2;
+  }
+
+  .certs-nav:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .certs-nav-prev { left: -20px; }
+  .certs-nav-next { right: -20px; }
+
+  .certs-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .certs-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--border-strong);
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .certs-dot.active { background: var(--accent); transform: scale(1.3); }
+
+  @media (max-width: 768px) {
+    .certs-nav { display: none; }
+  }
+
   /* ACHIEVEMENTS */
   .achieve-grid {
     display: grid;
@@ -1158,7 +1242,7 @@
           <div class="stat-desc">Web & App projects</div>
         </div>
         <div class="stat-box">
-          <div class="stat-val" data-count="7">0</div>
+          <div class="stat-val" data-count="16">0</div>
           <div class="stat-desc">Certifications earned</div>
         </div>
       </div>
@@ -1591,7 +1675,7 @@
       </tr>
       <tr>
         <td class="cert-num">03</td>
-        <td class="cert-name-cell">Zero to Hero in Python · Data Structures & Algorithms</td>
+        <td class="cert-name-cell">Master the Coding Interview: Data Structures + Algorithms</td>
       </tr>
       <tr>
         <td class="cert-num">04</td>
@@ -1599,17 +1683,128 @@
       </tr>
       <tr>
         <td class="cert-num">05</td>
-        <td class="cert-name-cell">Certificate in Customer Service Levels 1 & 2</td>
+        <td class="cert-name-cell">Cyber Security Training for School Staff — National Cyber Security Centre</td>
       </tr>
       <tr>
         <td class="cert-num">06</td>
-        <td class="cert-name-cell">Certificate in Accounting, Finance & Statistics</td>
+        <td class="cert-name-cell">Safeguarding Training — Code Camp Safeguarding Training Module</td>
       </tr>
       <tr>
         <td class="cert-num">07</td>
+        <td class="cert-name-cell">Understand Your Role within Safeguarding & Child Protection</td>
+      </tr>
+      <tr>
+        <td class="cert-num">08</td>
+        <td class="cert-name-cell">Differentiate Your Approach to Safeguarding Children with SEND</td>
+      </tr>
+      <tr>
+        <td class="cert-num">09</td>
+        <td class="cert-name-cell">Understand the Links Between Abuse and Mental Health</td>
+      </tr>
+      <tr>
+        <td class="cert-num">10</td>
+        <td class="cert-name-cell">Enable Children to Feel Safe so They Can Flourish</td>
+      </tr>
+      <tr>
+        <td class="cert-num">11</td>
+        <td class="cert-name-cell">Manage Pupils' Behaviour to Improve Teaching and Learning</td>
+      </tr>
+      <tr>
+        <td class="cert-num">12</td>
+        <td class="cert-name-cell">Effectively Work with Other Adults in School</td>
+      </tr>
+      <tr>
+        <td class="cert-num">13</td>
+        <td class="cert-name-cell">Developing Your Role as a Teaching Assistant Within Special Schools</td>
+      </tr>
+      <tr>
+        <td class="cert-num">14</td>
+        <td class="cert-name-cell">Certificate in Customer Service Levels 1 & 2</td>
+      </tr>
+      <tr>
+        <td class="cert-num">15</td>
+        <td class="cert-name-cell">Certificate in Accounting, Finance & Statistics</td>
+      </tr>
+      <tr>
+        <td class="cert-num">16</td>
         <td class="cert-name-cell">Certificate in Bank & Insurance</td>
       </tr>
     </table>
+
+    <div class="certs-carousel-wrap reveal">
+      <button class="certs-nav certs-nav-prev" aria-label="Previous certificate">‹</button>
+      <div class="certs-carousel" id="certsCarousel">
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/8.jpg" alt="Master the Coding Interview: Data Structures + Algorithms certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/7.jpg" alt="The Complete 2023 Web Development Bootcamp certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/9.jpg" alt="Cyber Security Training for School Staff certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/10.jpg" alt="Safeguarding Training — Code Camp Safeguarding Training Module certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/6.jpg" alt="Understand Your Role within Safeguarding & Child Protection certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/11.jpg" alt="Differentiate Your Approach to Safeguarding Children with SEND certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/5.jpg" alt="Understand the Links Between Abuse and Mental Health certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/3.jpg" alt="Enable Children to Feel Safe so They Can Flourish certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/4.jpg" alt="Manage Pupils' Behaviour to Improve Teaching and Learning certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/2.jpg" alt="Effectively Work with Other Adults in School certificate" loading="lazy">
+          </div>
+        </div>
+
+        <div class="cert-slide">
+          <div class="cert-slide-frame">
+            <img src="images/certs/12.jpg" alt="Developing Your Role as a Teaching Assistant Within Special Schools certificate" loading="lazy">
+          </div>
+        </div>
+
+      </div>
+      <button class="certs-nav certs-nav-next" aria-label="Next certificate">›</button>
+      <div class="certs-dots" id="certsDots"></div>
+    </div>
   </div>
 </section>
 
@@ -1662,6 +1857,46 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+  const certsTrack = document.getElementById('certsCarousel');
+  if (certsTrack) {
+    const slides = [...certsTrack.querySelectorAll('.cert-slide')];
+    const dotsWrap = document.getElementById('certsDots');
+    const dots = slides.map((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'certs-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to certificate ' + (i + 1));
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+      return d;
+    });
+
+    let currentIndex = 0;
+    const goTo = (i, behavior = 'smooth') => {
+      currentIndex = (i + slides.length) % slides.length;
+      certsTrack.scrollTo({ left: slides[currentIndex].offsetLeft, behavior });
+    };
+    document.querySelector('.certs-nav-prev').addEventListener('click', () => {
+      const wrap = currentIndex === 0;
+      goTo(currentIndex - 1, wrap ? 'instant' : 'smooth');
+    });
+    document.querySelector('.certs-nav-next').addEventListener('click', () => {
+      const wrap = currentIndex === slides.length - 1;
+      goTo(currentIndex + 1, wrap ? 'instant' : 'smooth');
+    });
+
+    const sio = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const i = slides.indexOf(e.target);
+        if (e.isIntersecting && i !== -1) {
+          currentIndex = i;
+          dots.forEach(d => d.classList.remove('active'));
+          dots[i].classList.add('active');
+        }
+      });
+    }, { root: certsTrack, threshold: 0.6 });
+    slides.forEach(s => sio.observe(s));
+  }
 })();
 </script>
 </body>
